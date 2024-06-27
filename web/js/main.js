@@ -5,6 +5,7 @@ var answerFail = null;
 var schweinchenVolume = 1;
 var answerFailVolume = 1;
 var schweinchen = null;
+var maxNumberOfWrongAnwsers = 2;
 // when the points for a round are assigned, we still want to show the other answers but no points should be calculated by that time
 // reset when changing a question
 var currentRoundPointsResolved = false;
@@ -181,6 +182,10 @@ $(document).ready(function() {
 		wsSend("setSumRes", $("#mPunkteSum").val());
 	});
 
+	$("#newMaxNumberOfWrongAnswers").click(function() {
+		wsSend("setMaxNumberOfWrongAnswers", $("#mMaxNumberOfWrongAnswers").val());
+	});
+
 	$("#alternateAnswerBtn").click(function(){
 		var is = $("#finalFragenSelect").val();
 		var answer = $("#alternateAnswer").val();
@@ -268,6 +273,13 @@ function setSumRes(newSumRes) {
 	$('#SumRes').text(newSumRes);
 	$("#mPunkteSum").val(newSumRes);
 	recalcSum(0);
+}
+
+function setMaxNumberOfWrongAnswers(newMaxNumberOfWrongAnswers) {
+	maxNumberOfWrongAnwsers = newMaxNumberOfWrongAnswers;
+	$("#mMaxNumberOfWrongAnswers").val(newMaxNumberOfWrongAnswers);
+	console.log("TEST")
+	init_xmarker();
 }
 
 function startAnswerFail() {

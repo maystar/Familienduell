@@ -170,7 +170,9 @@ var connectWs = function() {
 		} else if(key == "setRightPoints") {
 			setRightPoints(value);
 		} else if(key == "setSumRes") {
-			setSumRes(value);	
+			setSumRes(value);
+		} else if(key == "setMaxNumberOfWrongAnswers") {
+			setMaxNumberOfWrongAnswers(value);
 		} else if(key == "startAnswerFail") {
 			startAnswerFail();
 		} else if(key == "startAnswerDuplicate") {

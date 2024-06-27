@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "ws": "^0.4.25"
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  }
+}

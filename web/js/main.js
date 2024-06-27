@@ -624,7 +624,7 @@ function fillFragenEditor() {
 }
 
 function loadQuestions() {
-	wsSend("fileOp","read###fragen.txt");
+	wsSend("fileOp","read###data/fragen.txt");
 }
 
 function saveQuestions() {
@@ -645,7 +645,7 @@ function saveQuestions() {
 	});
 	var jsonQues = JSON.stringify(objToSave);
 	jsonQues = btoa(encodeURIComponent(jsonQues));
-	wsSend("fileOp","write###fragen.txt###"+jsonQues);
+	wsSend("fileOp","write###data/fragen.txt###"+jsonQues);
 }
 
 function addNewQuestion(frage) {

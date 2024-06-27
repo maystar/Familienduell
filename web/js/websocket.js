@@ -140,7 +140,7 @@ var connectWs = function() {
 		} else if(key == "showFinalScores") {
 			showFinalScores()
 		} else if(key == "file") {
-			if(value == "fragen.txt") {
+			if(value == "data/fragen.txt") {
 				try {
 					var base64 = decodeURIComponent(atob(messageParts_a[2]));
 					fragen = JSON.parse(base64);

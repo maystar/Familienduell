@@ -1,12 +1,12 @@
 services:
   duell:
-    image: familien-duell:latest 
+    image: ghcr.io/maystar/familienduell:latest
     build: .
     ports:
       - "8080:8080"
       - "8081:8081"
     volumes:
-      - data:/server/data
+      - data:/app/server/data
       
 volumes:
   data:

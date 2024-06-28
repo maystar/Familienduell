@@ -1,16 +1,13 @@
-//Websocket Server <<<<<<<<<<<<<<
-var wsPort = 8081;
 var webPort = 8080;
 var subscribers = [];
-var WebSocketServer = require('ws').Server;
-var wss = new WebSocketServer({port: wsPort});
+let WSServer = require('ws').Server;
 var http = require('http');
 var url = require('url');
 var path = require('path');
 var fs = require('fs');
 var baseDirectory = '../web/'
 
-http.createServer(function (request, response) {
+let server = http.createServer(function (request, response) {
     try {
     	var rurl = request.url;
     	if(rurl=="/") {
@@ -35,7 +32,12 @@ http.createServer(function (request, response) {
         response.end()     // end the response so browsers don't hang
         console.log(e.stack)
    }
-}).listen(webPort)   
+})
+
+// Create web socket server on top of a regular http server
+let wss = new WSServer({server: server});
+
+server.listen(webPort)   
 
 wss.on('connection', function(ws) {
 	subscribers.push(ws);
@@ -96,7 +98,6 @@ function broadcastMessage(clientId, msg) {
 	}
 }
 
-console.log("\nWebsocket server running on Port:"+wsPort);
 console.log("Webserver running on Port:"+webPort);
 
 console.log("\n---Verbinden von diesem PC---");

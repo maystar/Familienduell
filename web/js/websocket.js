@@ -1,7 +1,5 @@
 var retrys = 0;
 
-var WSPort = 8081;
-var IP = (location.host +"").split(":")[0];
 var isWebsocketConnected = false;
 var connTimer = null;
 var sounds = true;
@@ -84,12 +82,12 @@ $(document).ready(function() {
 	
 	
 var connectWs = function() {
-	ws = new WebSocket('ws://'+IP+':'+WSPort);
+	ws = new WebSocket('ws://' + location.host);
 
 	ws.onopen = function()
 	{
 		$("#notConnected").hide();
-		$("#connected").text("Verbunden mit: "+'ws://'+IP+':'+WSPort);
+		$("#connected").text("Verbunden mit: "+'ws://'+location.host);
 		$("#connected").show();
 		isWebsocketConnected = true;
 		loadQuestions();

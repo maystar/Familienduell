@@ -4,59 +4,45 @@
 
 Familienduell Client / Server (NodeJs Javascript)
 
-### -A- START DES SERVERS!
+_Dieser Fork ermöglicht einen Betrieb im Docker Container._
 
-___Windows___
-1. Im Ordner "server" die Datei StartServer.bat doppelklicken.
-   * Im Fenster das jetzt erscheint sollte: "SERVER IS UP AND RUNNING" stehen.
-   * Falls die Firewall fragt, solltest du die Anfrage zulassen da sonst der Client nicht verbinden kann.
+## Server starten
 
-___Mac___
+**Voraussetzung:** Container Laufzeitumgebung mit Docker Compose, z.B. Rancher Desktop 
 
-1. Installiere NodeJs und npm (https://nodejs.org/en/download/)
+```sh
+docker compose up 
+```
 
-2. starte die (mac) konsole und wechsle in den Serverordner
+Wenn das Artefakt local gebaut werden soll, anstatt von github packages heruntergeladen werden soll, dann nutze
 
-3. installiere das Websocketmodul (ws)
-`npm install ws`
+```sh
+docker compose up --build
+```
 
-4. Starte den Server
-`node server.js`
+## Anwendung starten
 
-5. In der Console erscheint: "SERVER IS UP AND RUNNING"
-
-### -B- START DES CONTROLLERS!
+### Controller
 
 1. Browser öffnen und zur Adresse: http://127.0.0.1:8080 surfen
+2. Auf `Controller` Button klicken.
 
-2. Auf den Controller Button klicken.
+### Display
 
-### -C- Start des Displays
-
-1. In einem neuen Browserfenster/tab verbinden und auf "Display" klicken.
-
+1. In einem neuen Browserfenster/tab verbinden und auf `Display` klicken.
 
 ---------------------------
 
-### FAQs:
+## FAQs:
 Q: Warum ist das Display zu Beginn schwarz, und wie kann ich das ändern?   
 A: Das Bild ist schwarz damit man die Intromusik starten kann und die Leute (Zuschauer) nicht schon vorher wissen was auf sie zukommt.
    Dies kann (Im Controller) über die Checkbox "Blackscreen", im Bereich "Intro" kontrolliert werden.
 
-Q: Warum bekomm ich die Fehlermeldung "node.exe wurde falsch geschrieben oder konnte nicht gefunden werden"?<br>
-A: Die heruntergeladene zip Datei muss zunächst entpack werden. Rechtsklick auf die Datei -> Alles etpacken.
-
 Q: Wie funktioniert das mit 2 oder mehr Geräten?   
 A: Alle Geräte müssen im gleichen Netzwerk sein. Dann verwende einfach eine Externe IP des Servers (aus dem Serverfenster) zum verbinden von einem anderen Gerät aus.
 
-Q: Läuft der Server mit nodeJs auch unter Linux / Läuft der Python Server auch unter Windows?    
-A: Ja, dafür müssen jedoch zunächst die etsprechenden Abhänigkeiten installiert werden.
-
 Q: Gibt es eine Funktion um Leuten über einen Link direkt das Zuschauen zu ermöglichen?   
 A: Ja. Der Link lautet: http://SERVERURL/PFAD/index.html?viewonly=true (SERVERURL und PFAD anpassen!)
-
-Q: Ich erhalten im Serverfenster den Fehler: Error: listen EADDRINUSE   
-A: Eine andere Anwendung blockiert bereits den Port. Beende diese und starte den Server erneut
 
 Q: Ich habe sonstige Fehler bei (Anzeige, Verbindungsaufbau, Anwendungsverhalten)   
 A: Falls du einen anderen Browser als Google Chrome verwendest, installiere Chrome.

@@ -82,12 +82,12 @@ $(document).ready(function() {
 	
 	
 var connectWs = function() {
-	ws = new WebSocket('ws://' + location.host);
+	ws = new WebSocket('wss://' + location.host);
 
 	ws.onopen = function()
 	{
 		$("#notConnected").hide();
-		$("#connected").text("Verbunden mit: "+'ws://'+location.host);
+		$("#connected").text("Verbunden mit: "+'wss://'+location.host);
 		$("#connected").show();
 		isWebsocketConnected = true;
 		loadQuestions();

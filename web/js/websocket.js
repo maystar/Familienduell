@@ -81,13 +81,15 @@ $(document).ready(function() {
 });
 	
 	
-var connectWs = function() {
-	ws = new WebSocket('wss://' + location.host);
+var connectWs = function () {
+	let websocketProtocol = location.protocol == "https:" ? "wss:" : 'ws:'
+	let wsUrl = websocketProtocol + '//' + location.host
+	ws = new WebSocket(wsUrl);
 
 	ws.onopen = function()
 	{
 		$("#notConnected").hide();
-		$("#connected").text("Verbunden mit: "+'wss://'+location.host);
+		$("#connected").text("Verbunden mit: " + wsUrl);
 		$("#connected").show();
 		isWebsocketConnected = true;
 		loadQuestions();
